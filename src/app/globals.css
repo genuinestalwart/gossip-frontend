@@ -5,9 +5,11 @@
 @layer base {
 	* {
 		@apply box-border transition-all;
-
 		&::-webkit-scrollbar {
 			@apply h-2 w-2;
+		}
+		&::-webkit-scrollbar-thumb {
+			@apply bg-primary rounded-lg;
 		}
 	}
 }
