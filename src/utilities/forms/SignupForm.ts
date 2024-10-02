@@ -1,7 +1,7 @@
 import { UseFormInput } from "@mantine/form";
 
-export const signinForm: UseFormInput<Record<string, any>> = {
-	initialValues: { email: "", name: "", password: "" },
+export const signupForm: UseFormInput<Record<string, any>> = {
+	initialValues: { email: "", password: "" },
 	mode: "uncontrolled",
 	validate: {
 		email: (v) =>

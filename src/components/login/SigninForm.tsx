@@ -1,13 +1,23 @@
 "use client";
-import { signinForm } from "@/utilities/SigninForm";
+import { signinForm } from "@/utilities/forms/SigninForm";
+import { signInWithCredentials } from "@/utilities/functions/next-auth";
 import { Box, Button, PasswordInput, Space, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useState } from "react";
 
-const SigninForm = () => {
+interface Props {
+	disabled: boolean;
+	setDisabled: Function;
+}
+
+const SignInForm: React.FC<Props> = ({ disabled, setDisabled }) => {
+	const [loading, setLoading] = useState<boolean>(false);
 	const form = useForm(signinForm);
 
-	const handleSubmit = (data: any) => {
-		console.log(data);
+	const handleSubmit = async (data: any) => {
+		setDisabled(true);
+		setLoading(true);
+		await signInWithCredentials(data);
 	};
 
 	return (
@@ -19,7 +29,7 @@ const SigninForm = () => {
 			p='md'>
 			<TextInput
 				autoComplete='email'
-				key={form.key("email")}
+				disabled={disabled}
 				label='Your Email'
 				type='email'
 				withAsterisk
@@ -30,7 +40,7 @@ const SigninForm = () => {
 
 			<PasswordInput
 				autoComplete='new-password'
-				key={form.key("password")}
+				disabled={disabled}
 				label='Your Password'
 				withAsterisk
 				{...form.getInputProps("password")}
@@ -40,14 +50,16 @@ const SigninForm = () => {
 
 			<Button
 				color='primary.6'
+				disabled={disabled}
 				fullWidth
+				loading={loading}
 				size='md'
 				style={{ color: "black" }}
 				type='submit'>
-				Sign In
+				Log In
 			</Button>
 		</Box>
 	);
 };
 
-export default SigninForm;
+export default SignInForm;

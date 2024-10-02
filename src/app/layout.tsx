@@ -5,7 +5,7 @@ import "@mantine/core/styles.css";
 import "@fontsource-variable/saira";
 import "@fontsource-variable/orbitron";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { theme } from "@/utilities/theme";
+import { theme } from "@/utilities/configs/theme";
 
 const orbitron = Orbitron({
 	weight: ["400", "500", "600", "700", "800", "900"],
@@ -34,12 +34,15 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<html className={`${orbitron.variable} ${saira.variable}`} lang='en'>
+		<html
+			className={`${orbitron.variable} ${saira.variable}`}
+			lang='en'
+			suppressHydrationWarning>
 			<head>
 				<ColorSchemeScript />
 			</head>
 
-			<body className='bg-neutral-950 font-saira text-white'>
+			<body className='antialiased bg-neutral-950 font-saira text-white'>
 				<MantineProvider defaultColorScheme='dark' theme={theme}>
 					{children}
 				</MantineProvider>

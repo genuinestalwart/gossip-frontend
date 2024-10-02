@@ -1,30 +1,58 @@
 "use client";
 import { Group } from "@mantine/core";
-import ActiveLink from "@/components/shared/ActiveLink";
+import { Session } from "next-auth";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import NavMenu from "@/components/shared/NavMenu";
 
-const links = [
+const linksA = [
 	{ path: "/", text: "Home" },
-	{ path: "/feedback", text: "Feedback" },
-	{ path: "/login", text: "Login" },
+	{ path: "/feedback", text: "Feedbacks" },
 ];
 
-const Navbar = () => {
+const linksB = [
+	{ path: "/login", text: "Log In" },
+	{ path: "/register", text: "Register" },
+];
+
+const className = (active: boolean) =>
+	`font-medium ${
+		active ? "text-primary" : "hover:underline underline-offset-2"
+	}`;
+
+const Navbar = ({ session }: { session: Session | null }) => {
+	const pathname = usePathname();
+	const links = session ? linksA : [...linksA, ...linksB];
+
+	useEffect(() => {
+		console.log(session);
+	}, [session]);
+
 	return (
-		<Group gap='xl'>
+		<Group gap='xl' visibleFrom='xs'>
 			{links.map((item, i) => (
-				<ActiveLink
-					className={(active: boolean) =>
-						`font-medium ${
-							active
-								? "text-primary"
-								: "hover:underline underline-offset-2"
-						}`
-					}
+				<Link
+					className={className(item.path === pathname)}
 					href={item.path}
-					key={i}>
+					key={i}
+					scroll={false}>
 					{item.text}
-				</ActiveLink>
+				</Link>
 			))}
+
+			{session && (
+				<>
+					<Link
+						className={className("/manage" === pathname)}
+						href='/manage'
+						scroll={false}>
+						Rooms
+					</Link>
+
+					<NavMenu session={session} />
+				</>
+			)}
 		</Group>
 	);
 };

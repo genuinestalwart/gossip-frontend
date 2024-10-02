@@ -1,54 +1,49 @@
 "use client";
-import SigninForm from "@/components/login/SigninForm";
-import SignupForm from "@/components/login/SignupForm";
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
-import { Box, Button, Card, Divider, Space, Text, Title } from "@mantine/core";
+import ForgotForm from "@/components/login/ForgotForm";
+import SignInForm from "@/components/login/SignInForm";
+import WithGoogle from "@/components/shared/WithGoogle";
+import { Box, Card, Space, Text, Title } from "@mantine/core";
 import { useState } from "react";
 
 const LoginPage = () => {
-	const [login, setLogin] = useState(true);
+	const [disabled, setDisabled] = useState<boolean>(false);
+	const [login, setLogin] = useState<boolean>(true);
 
 	return (
-		<>
-			<Header />
+		<Box className='container min-h-[calc(100vh_-_4rem)]' component='main'>
+			<Card maw='50ch' mx='auto' my='xl' radius='lg'>
+				<Title order={1} ta='center' style={{ color: "white" }}>
+					{login ? "Welcome Back, User!" : "We've Got You Covered!"}
+				</Title>
 
-			<Box className='container' component='main'>
-				<Card maw='50ch' mx='auto' my='xl' radius='lg'>
-					<Title order={1} ta='center' style={{ color: "white" }}>
-						{login ? "Welcome Back, User!" : "Get Started With Us!"}
-					</Title>
+				<Space h='lg' />
+				{login ? (
+					<SignInForm disabled={disabled} setDisabled={setDisabled} />
+				) : (
+					<ForgotForm />
+				)}
 
-					<Space h='lg' />
-					{login ? <SigninForm /> : <SignupForm />}
-					<Divider my='sm' label='OR' labelPosition='center' />
-
-					<Button
-						color='primary.6'
-						mx='md'
-						size='md'
-						style={{ color: "black" }}>
-						{login ? "Signin" : "Signup"} with Google
-					</Button>
-
-					<Space h='xs' />
-
-					<Text size='sm' ta='center'>
-						{login ? "Don't" : "Already"} have an account?{" "}
-						<Text
-							c='primary.6'
-							className='hover:underline'
-							onClick={() => setLogin(!login)}
-							span
-							style={{ cursor: "pointer" }}>
-							{login ? "Create a new one." : "Try login instead."}
-						</Text>
+				{!disabled && (
+					<Text
+						c='primary.6'
+						className='hover:underline'
+						mt='xs'
+						onClick={() => setLogin(!login)}
+						size='sm'
+						style={{ cursor: "pointer" }}>
+						{login ? "Forgot" : "Remember"} password?
 					</Text>
-				</Card>
-			</Box>
+				)}
 
-			<Footer />
-		</>
+				{login && (
+					<WithGoogle
+						disabled={disabled}
+						login
+						setDisabled={setDisabled}
+					/>
+				)}
+			</Card>
+		</Box>
 	);
 };
 

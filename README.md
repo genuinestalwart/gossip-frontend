@@ -6,6 +6,10 @@
 
 - Next.js
 - Mantine UI
+- TailwindCSS
+- TypeScript
+- Next Auth
+- Axios
 
 ## Documentation
 
@@ -15,7 +19,7 @@ If you want to create this project on your own, do the following steps:
 
     ```bash
     npx create-next-app@latest
-    npm install @mantine/core @mantine/hooks @mantine/form @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react
+    npm install @mantine/core @mantine/hooks @mantine/form @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react next-auth@beta axios
     npm install --save-dev postcss-preset-mantine postcss-simple-vars
     ```
 
@@ -39,5 +43,11 @@ If you want to create this project on your own, do the following steps:
     },
     ```
 
-3. Import your fonts and other css files in `app/layout.tsx` file; Add your custom colors and font variables in `tailwind.config.ts` file.
-4. Define your own theme for Mantine UI and add it via the provider in `app/layout.tsx` file.
+3. Generate the auth secret environment variable for Next Auth.
+
+    ```bash
+    npx auth secret
+    ```
+
+4. Import your fonts and other css files in `app/layout.tsx` file; Add your custom colors and font variables in `tailwind.config.ts` file.
+5. Define your own theme for Mantine UI and add it via the provider in `app/layout.tsx` file.
