@@ -10,6 +10,7 @@
 - TypeScript
 - Next Auth
 - Axios
+- Tanstack React Query
 
 ## Documentation
 
@@ -19,7 +20,7 @@ If you want to create this project on your own, do the following steps:
 
     ```bash
     npx create-next-app@latest
-    npm install @mantine/core @mantine/hooks @mantine/form @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react next-auth@beta axios
+    npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react next-auth@beta axios @tanstack/react-query
     npm install --save-dev postcss-preset-mantine postcss-simple-vars
     ```
 

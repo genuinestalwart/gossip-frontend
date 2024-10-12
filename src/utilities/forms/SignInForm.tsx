@@ -1,4 +1,6 @@
+import { Text, Title } from "@mantine/core";
 import { UseFormInput } from "@mantine/form";
+import { NotificationData } from "@mantine/notifications";
 
 export const signinForm: UseFormInput<Record<string, any>> = {
 	initialValues: { email: "", password: "" },
@@ -17,4 +19,20 @@ export const signinForm: UseFormInput<Record<string, any>> = {
 				? null
 				: "Your password must contain at least 1 small letter, 1 big letter, 1 number and 1 special character and must be 8-32 characters long.",
 	},
+};
+
+export const notifyData: NotificationData = {
+	autoClose: false,
+	color: "white",
+	message: <Text c='white'>Incorrect credentials. Please try again.</Text>,
+	position: "bottom-right",
+	styles: {
+		root: { backgroundColor: "red" },
+		closeButton: { color: "white" },
+	},
+	title: (
+		<Title c='white' fw={800} order={5}>
+			Log In Failed
+		</Title>
+	),
 };

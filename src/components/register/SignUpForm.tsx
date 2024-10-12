@@ -12,7 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import WithGoogle from "@/components/shared/WithGoogle";
 import { useState } from "react";
-import { signInWithCredentials } from "@/utilities/functions/next-auth";
+import { signInWithCredentials } from "@/utilities/actions/authAliases";
 
 interface Props {
 	disabled: boolean;
@@ -28,7 +28,7 @@ const SignUpForm: React.FC<Props> = ({ disabled, names, setDisabled }) => {
 		const credentials = { ...data, ...names };
 		setDisabled(true);
 		setLoading(true);
-		await signInWithCredentials(credentials);
+		await signInWithCredentials(credentials, " ");
 	};
 
 	return (

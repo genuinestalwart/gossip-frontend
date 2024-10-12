@@ -1,8 +1,9 @@
 "use client";
-import { signinForm } from "@/utilities/forms/SigninForm";
-import { signInWithCredentials } from "@/utilities/functions/next-auth";
+import { signInWithCredentials } from "@/utilities/actions/authAliases";
+import { notifyData, signinForm } from "@/utilities/forms/SignInForm";
 import { Box, Button, PasswordInput, Space, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { showNotification } from "@mantine/notifications";
 import { useState } from "react";
 
 interface Props {
@@ -17,7 +18,14 @@ const SignInForm: React.FC<Props> = ({ disabled, setDisabled }) => {
 	const handleSubmit = async (data: any) => {
 		setDisabled(true);
 		setLoading(true);
-		await signInWithCredentials(data);
+
+		try {
+			await signInWithCredentials(data, "");
+		} catch (error) {
+			showNotification(notifyData);
+			setDisabled(false);
+			setLoading(false);
+		}
 	};
 
 	return (

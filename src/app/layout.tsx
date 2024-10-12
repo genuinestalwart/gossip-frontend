@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Orbitron, Saira } from "next/font/google";
-import "@/app/globals.css";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@/app/globals.css";
 import "@fontsource-variable/saira";
 import "@fontsource-variable/orbitron";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import { theme } from "@/utilities/configs/theme";
+import { ColorSchemeScript } from "@mantine/core";
+import Providers from "@/components/misc/Providers";
 
 const orbitron = Orbitron({
 	weight: ["400", "500", "600", "700", "800", "900"],
@@ -43,9 +44,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			</head>
 
 			<body className='antialiased bg-neutral-950 font-saira text-white'>
-				<MantineProvider defaultColorScheme='dark' theme={theme}>
-					{children}
-				</MantineProvider>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

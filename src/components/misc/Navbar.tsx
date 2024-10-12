@@ -3,8 +3,7 @@ import { Group } from "@mantine/core";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import NavMenu from "@/components/shared/NavMenu";
+import NavMenu from "@/components/misc/NavMenu";
 
 const linksA = [
 	{ path: "/", text: "Home" },
@@ -24,10 +23,6 @@ const className = (active: boolean) =>
 const Navbar = ({ session }: { session: Session | null }) => {
 	const pathname = usePathname();
 	const links = session ? linksA : [...linksA, ...linksB];
-
-	useEffect(() => {
-		console.log(session);
-	}, [session]);
 
 	return (
 		<Group gap='xl' visibleFrom='xs'>

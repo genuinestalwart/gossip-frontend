@@ -1,5 +1,5 @@
 "use client";
-import { logOut } from "@/utilities/functions/next-auth";
+import { logOut } from "@/utilities/actions/authAliases";
 import { Burger, Button, Drawer, Stack } from "@mantine/core";
 import { Session } from "next-auth";
 import Link from "next/link";
