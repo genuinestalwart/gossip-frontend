@@ -2,7 +2,7 @@ import { Text, Title } from "@mantine/core";
 import { UseFormInput } from "@mantine/form";
 import { NotificationData } from "@mantine/notifications";
 
-export const signinForm: UseFormInput<Record<string, any>> = {
+export const signInForm: UseFormInput<Record<string, any>> = {
 	initialValues: { email: "", password: "" },
 	mode: "uncontrolled",
 	validate: {
@@ -22,7 +22,7 @@ export const signinForm: UseFormInput<Record<string, any>> = {
 };
 
 export const notifyData: NotificationData = {
-	autoClose: false,
+	autoClose: 4000,
 	color: "white",
 	message: <Text c='white'>Incorrect credentials. Please try again.</Text>,
 	position: "bottom-right",

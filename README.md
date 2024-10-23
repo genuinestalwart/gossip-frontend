@@ -20,8 +20,8 @@ If you want to create this project on your own, do the following steps:
 
     ```bash
     npx create-next-app@latest
-    npm install @mantine/core @mantine/hooks @mantine/form @mantine/notifications @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react next-auth@beta axios @tanstack/react-query
-    npm install --save-dev postcss-preset-mantine postcss-simple-vars
+    npm i @mantine/core @mantine/hooks @mantine/form @mantine/notifications @fontsource-variable/orbitron @fontsource-variable/saira @tabler/icons-react next-auth@beta axios @tanstack/react-query
+    npm i -D postcss-preset-mantine postcss-simple-vars
     ```
 
 2. Update the `postcss.config.mjs` file.

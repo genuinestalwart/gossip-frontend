@@ -4,7 +4,7 @@ import { Session } from "next-auth";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-	baseURL: "http://localhost:5000",
+	baseURL: "https://gs-gossip-backend.vercel.app",
 });
 
 const useAxiosSecure = (session: Session | null) => {

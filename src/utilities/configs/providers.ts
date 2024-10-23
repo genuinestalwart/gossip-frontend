@@ -2,13 +2,13 @@ import { NextAuthConfig } from "next-auth";
 import credentials from "next-auth/providers/credentials";
 import axiosAuth from "@/utilities/configs/axiosAuth";
 
-const loginUser = async (email: string, password: string) => {
-	const { data } = await axiosAuth.post("/login", { email, password });
+const logInWithCredentials = async (email: string, password: string) => {
+	const { data } = await axiosAuth.post("/auth/login", { email, password });
 	return data;
 };
 
-const registerUser = async (credentials: object) => {
-	const { data } = await axiosAuth.post("/register", credentials);
+const registerWithCredentials = async (credentials: object) => {
+	const { data } = await axiosAuth.post("/auth/register", credentials);
 	return data;
 };
 
@@ -24,13 +24,13 @@ export default {
 			}) => {
 				const credentials = { email, firstName, fullName, password };
 				let user = null;
-				user = await loginUser(
+				user = await logInWithCredentials(
 					(email as string).toLowerCase(),
 					password as string
 				);
 
 				if (!user && register) {
-					user = await registerUser(credentials);
+					user = await registerWithCredentials(credentials);
 				}
 
 				return user;
