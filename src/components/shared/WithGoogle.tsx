@@ -1,3 +1,4 @@
+import { signInWithGoogle } from "@/lib/utils/auth.util";
 import { Button, Divider, Space, Text } from "@mantine/core";
 import Link from "next/link";
 import { useState } from "react";
@@ -11,9 +12,10 @@ interface Props {
 const WithGoogle: React.FC<Props> = ({ disabled, login, setDisabled }) => {
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const handleClick = () => {
+	const handleClick = async () => {
 		setDisabled(true);
 		setLoading(true);
+		await signInWithGoogle();
 	};
 
 	return (

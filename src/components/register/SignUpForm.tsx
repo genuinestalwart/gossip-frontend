@@ -1,5 +1,5 @@
 "use client";
-import { signupForm } from "@/utilities/forms/SignupForm";
+import { signupForm } from "@/lib/forms/SignupForm";
 import {
 	Box,
 	Button,
@@ -12,7 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import WithGoogle from "@/components/shared/WithGoogle";
 import { useState } from "react";
-import { signInWithCredentials } from "@/utilities/actions/authAliases";
+import { signInWithCredentials } from "@/lib/utils/auth.util";
 
 interface Props {
 	disabled: boolean;

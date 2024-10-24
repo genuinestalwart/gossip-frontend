@@ -1,4 +1,4 @@
-import { logOut } from "@/utilities/actions/authAliases";
+import { logOut } from "@/lib/utils/auth.util";
 import axios from "axios";
 import { Session } from "next-auth";
 import { useEffect } from "react";

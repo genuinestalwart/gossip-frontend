@@ -1,5 +1,5 @@
 "use client";
-import { theme } from "@/utilities/configs/theme";
+import { theme } from "@/lib/configs/theme.config";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

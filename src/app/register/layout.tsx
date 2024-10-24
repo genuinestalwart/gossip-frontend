@@ -1,6 +1,6 @@
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
-import { auth } from "@/utilities/configs/auth";
+import { auth } from "@/lib/configs/auth.config";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 

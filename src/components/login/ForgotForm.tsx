@@ -1,5 +1,5 @@
 "use client";
-import { forgotForm } from "@/utilities/forms/ForgotForm";
+import { forgotForm } from "@/lib/forms/ForgotForm";
 import { Box, Button, Space, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 

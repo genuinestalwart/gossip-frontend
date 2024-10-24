@@ -1,15 +1,25 @@
 import { NextAuthConfig } from "next-auth";
 import credentials from "next-auth/providers/credentials";
-import axiosAuth from "@/utilities/configs/axiosAuth";
+import axiosAuth from "@/lib/configs/axios.config";
+import Google from "next-auth/providers/google";
 
 const logInWithCredentials = async (email: string, password: string) => {
-	const { data } = await axiosAuth.post("/auth/login", { email, password });
-	return data;
+	try {
+		const credentials = { email, password };
+		const { data } = await axiosAuth.post("/auth/login", credentials);
+		return data;
+	} catch (error) {
+		return null;
+	}
 };
 
 const registerWithCredentials = async (credentials: object) => {
-	const { data } = await axiosAuth.post("/auth/register", credentials);
-	return data;
+	try {
+		const { data } = await axiosAuth.post("/auth/register", credentials);
+		return data;
+	} catch (error) {
+		return null;
+	}
 };
 
 export default {
@@ -42,6 +52,10 @@ export default {
 				password: { type: "password" },
 				register: { type: "text" },
 			},
+		}),
+		Google({
+			clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
+			clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET,
 		}),
 	],
 } satisfies NextAuthConfig;

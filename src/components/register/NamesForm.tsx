@@ -1,5 +1,5 @@
 "use client";
-import { namesForm } from "@/utilities/forms/NamesForm";
+import { namesForm } from "@/lib/forms/NamesForm";
 import { Box, Button, Card, Space, TextInput, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";

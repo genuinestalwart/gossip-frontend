@@ -1,7 +1,7 @@
 "use client";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { User } from "@/types/global";
-import { logOut } from "@/utilities/actions/authAliases";
+import { logOut } from "@/lib/utils/auth.util";
 import {
 	Avatar,
 	Button,

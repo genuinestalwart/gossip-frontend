@@ -1,6 +1,6 @@
 "use client";
-import { signInWithCredentials } from "@/utilities/actions/authAliases";
-import { notifyData, signInForm } from "@/utilities/forms/SignInForm";
+import { signInWithCredentials } from "@/lib/utils/auth.util";
+import { notifyData, signInForm } from "@/lib/forms/SignInForm";
 import { Box, Button, PasswordInput, Space, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";

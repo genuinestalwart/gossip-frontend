@@ -1,7 +1,7 @@
 import { Flex, Group, Title } from "@mantine/core";
 import Logo from "@/components/misc/Logo";
 import Navbar from "@/components/misc/Navbar";
-import { auth } from "@/utilities/configs/auth";
+import { auth } from "@/lib/configs/auth.config";
 import NavDrawer from "@/components/misc/NavDrawer";
 
 const Header = async () => {
